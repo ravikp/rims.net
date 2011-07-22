@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rims.formulae.unit.tests", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{EBBDD8F2-5AC5-490D-8F92-FE90AF47AB6D}"
 	ProjectSection(SolutionItems) = preProject
-		default.build = default.build
+		build\default.build = build\default.build
 	EndProjectSection
 EndProject
 Global

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<project name="rims.net" default="build">
-  <property name="root" value="${path::get-full-path('.')}" readonly="true"/>
+<project name="rims.net" default="build">  
+  <property name="root" value="${path::get-full-path('.')}/../" readonly="true"/>  
 
   <property name="excel_dna_dist" value="${root}/lib/ExcelDna-0.29/Distribution"/>
   

@@ -1,3 +1,3 @@
 #! /bin/env bash
 
-tools/nant/bin/Nant.exe $*
+tools/nant/bin/Nant.exe -buildfile:build/default.build$*
