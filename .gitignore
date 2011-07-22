@@ -5,3 +5,5 @@ rims.net.suo
 *.sln.cache
 rims.formulae*/bin/**/*.*
 rims.formulae*/obj/**/*.*
+binaries/
+dist/
