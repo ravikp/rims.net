@@ -7,21 +7,23 @@
   <property name="MSBuildPath" value="C:\WINDOWS\Microsoft.NET\Framework\v3.5\MSBuild.exe"/>
   <property name="SolutionConfiguration" value="Release"/>
   <property name="SolutionFile" value="${root}/rims.net.sln"/>
-  <property name="OutputBinariesDirectory" value="${root}/binaries"/>
+  <property name="binaries.dir" value="${root}/binaries"/>
   <property name="distribution" value="${root}/dist"/>
   
   <target name="build" depends="-compile.solution, -run.unit.tests"/>
   <target name="package" depends="build, -create.addin"/>
   <target name="-create.addin">
     <copy file="${excel_dna_dist}/ExcelDna.xll" tofile="${distribution}/${project::get-name()}.xll"/>
+    <copy file="${root}/build/rims.net.dna" tofile="${distribution}/rims.net.dna"/>
+    <copy file="${binaries.dir}/rims.formulae.dll" tofile="${distribution}/rims.formulae.dll"/>
   </target>
 
   <target name="-compile.solution">
-    <echo message="${OutputBinariesDirectory}"/>
+    <echo message="${binaries.dir}"/>
     <exec program="${MSBuildPath}">
       <arg line='"${SolutionFile}"' />
       <arg line="/property:Configuration=${SolutionConfiguration}" />
-      <arg value='/property:OutputPath="${OutputBinariesDirectory}"' />
+      <arg value='/property:OutputPath="${binaries.dir}"' />
       <arg value="/target:Rebuild" />
       <arg value="/verbosity:minimal" />
       <arg value="/nologo" />
