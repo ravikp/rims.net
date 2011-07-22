@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<project name="rims.net" default="build">
+  <property name="root" value="${path::get-full-path('.')}" readonly="true"/>
+
+  <property name="excel_dna_dist" value="${root}/lib/ExcelDna-0.29/Distribution"/>
+  
+  <property name="MSBuildPath" value="C:\WINDOWS\Microsoft.NET\Framework\v3.5\MSBuild.exe"/>
+  <property name="SolutionConfiguration" value="Release"/>
+  <property name="SolutionFile" value="${root}/rims.net.sln"/>
+  <property name="OutputBinariesDirectory" value="${root}/binaries"/>
+  <property name="distribution" value="${root}/dist"/>
+  
+  <target name="build" depends="-compile.solution, -run.unit.tests"/>
+  <target name="package" depends="build, -create.addin"/>
+  <target name="-create.addin">
+    <copy file="${excel_dna_dist}/ExcelDna.xll" tofile="${distribution}/${project::get-name()}.xll"/>
+  </target>
+
+  <target name="-compile.solution">
+    <echo message="${OutputBinariesDirectory}"/>
+    <exec program="${MSBuildPath}">
+      <arg line='"${SolutionFile}"' />
+      <arg line="/property:Configuration=${SolutionConfiguration}" />
+      <arg value='/property:OutputPath="${OutputBinariesDirectory}"' />
+      <arg value="/target:Rebuild" />
+      <arg value="/verbosity:minimal" />
+      <arg value="/nologo" />
+    </exec>
+  </target>
+
+  <target name="-run.unit.tests"/>
+      
+</project>

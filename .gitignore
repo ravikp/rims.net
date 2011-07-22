@@ -1,0 +1,7 @@
+_ReSharper.rims.net/
+rims.net.4.0.resharper
+rims.net.4.0.resharper.user
+rims.net.suo
+*.sln.cache
+rims.formulae*/bin/**/*.*
+rims.formulae*/obj/**/*.*

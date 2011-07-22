@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rims.formulae", "rims.formulae\rims.formulae.csproj", "{5EF979E1-E688-491D-994D-D010D657998F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rims.formulae.unit.tests", "rims.formulae.unit.tests\rims.formulae.unit.tests.csproj", "{AE49ED9C-E406-4187-A730-02382C2F72D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{EBBDD8F2-5AC5-490D-8F92-FE90AF47AB6D}"
+	ProjectSection(SolutionItems) = preProject
+		default.build = default.build
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5EF979E1-E688-491D-994D-D010D657998F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EF979E1-E688-491D-994D-D010D657998F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EF979E1-E688-491D-994D-D010D657998F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EF979E1-E688-491D-994D-D010D657998F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE49ED9C-E406-4187-A730-02382C2F72D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE49ED9C-E406-4187-A730-02382C2F72D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE49ED9C-E406-4187-A730-02382C2F72D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE49ED9C-E406-4187-A730-02382C2F72D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
