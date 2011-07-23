@@ -42,4 +42,7 @@
 
   <target name="-run.unit.tests"/>
       
+  <!--all aliases-->
+  <target name="pb" depends="packagable.binaries"/>
+  
 </project>
