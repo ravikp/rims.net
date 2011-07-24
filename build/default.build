@@ -21,7 +21,7 @@
 
   <target name="zip.file" depends="packagable.binaries">
     <zip zipfile="${distribution}/rims.net-addin.zip">
-      <fileset basedir="${distribution}">
+      <fileset basedir="${distribution}" prefix="rims.net-addin">
         <include name="**/*" />
         <exclude name="rims.net-addin.zip" />
       </fileset>      
