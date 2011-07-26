@@ -1,3 +1,4 @@
+using System;
 using ExcelDna.Integration;
 
 namespace rims.formulae
@@ -7,11 +8,14 @@ namespace rims.formulae
         [ExcelFunction
             ("Converts figures into words.", 
             Category = FunctionNames.Category,
-            Name = FunctionNames.SpellNumber
+            Name = FunctionNames.SpellNumber,
+            IsThreadSafe = true
             )]
+
         public static string SpellNumber(double figure)
         {
-            var wordData = new WordData((long) figure, string.Empty);
+            var ifigure = (long) figure;
+            var wordData = new WordData(ifigure, string.Empty, figure - ifigure);
             ApplyDenominator(wordData,10000000,"crore");
             ApplyDenominator(wordData,100000,"lakh");
             ApplyDenominator(wordData,1000,"thousand" );
@@ -23,7 +27,9 @@ namespace rims.formulae
                 wordData.figure %= 10;               
             }
 
-            if(wordData.figure > 0) (wordData.word+=" " + GetNumbers()[wordData.figure]).Trim();
+            if(wordData.figure > 0) wordData.word+=" " + GetNumbers()[wordData.figure];
+
+            if (wordData.roundedDecimalValue > 0) wordData.word += " and " + SpellNumber(wordData.roundedDecimalValue) + " paise";
 
             return wordData.word.Trim();
             
@@ -39,17 +45,17 @@ namespace rims.formulae
         }
 
         private static string[] GetNumbers()
-        {
+        { 
             var numbers = new string[101];
-            numbers[1] = "one";
-            numbers[2] = "two";
-            numbers[3] = "three";
-            numbers[4] = "four";
-            numbers[5] = "five";
-            numbers[6] = "six";
-            numbers[7] = "seven";
-            numbers[8] = "eight";
-            numbers[9] = "nine";
+            numbers[1]  = "one";
+            numbers[2]  = "two";
+            numbers[3]  = "three";
+            numbers[4]  = "four";
+            numbers[5]  = "five";
+            numbers[6]  = "six";
+            numbers[7]  = "seven";
+            numbers[8]  = "eight";
+            numbers[9]  = "nine";
             numbers[10] = "ten";
             numbers[11] = "eleven";
             numbers[12] = "twelve";

@@ -106,5 +106,12 @@ namespace rims.formulae.unit.tests
         {
             Assert.That(NumberExtensions.SpellNumber(10000000 * 50), Is.EqualTo("fifty crore"));
         }
+
+        [Test]
+        public void ShouldBeWithDecimals()
+        {
+            Assert.That(NumberExtensions.SpellNumber(5.25), Is.EqualTo("five and twenty five paise"));
+            Assert.That(NumberExtensions.SpellNumber(1.25), Is.EqualTo("one and twenty five paise"));
+        }
     }
 }
