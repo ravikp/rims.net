@@ -11,6 +11,35 @@ namespace rims.formulae
             )]
         public static string SpellNumber(double figure)
         {
+            var wordData = new WordData((long) figure, string.Empty);
+            ApplyDenominator(wordData,10000000,"crore");
+            ApplyDenominator(wordData,100000,"lakh");
+            ApplyDenominator(wordData,1000,"thousand" );
+            ApplyDenominator(wordData,100,"hundred" );
+            
+            if(wordData.figure > 20)
+            {
+                wordData.word += " " + GetNumbers()[wordData.figure/10*10];
+                wordData.figure %= 10;               
+            }
+
+            if(wordData.figure > 0) (wordData.word+=" " + GetNumbers()[wordData.figure]).Trim();
+
+            return wordData.word.Trim();
+            
+        }
+
+        private static void ApplyDenominator(WordData wordData, int denominator, string denominatorWord)
+        {
+            if (wordData.figure >= denominator)
+            {
+                wordData.word += " " + SpellNumber(wordData.figure/denominator*1) + " " + denominatorWord;
+                wordData.figure %= denominator;
+            }
+        }
+
+        private static string[] GetNumbers()
+        {
             var numbers = new string[101];
             numbers[1] = "one";
             numbers[2] = "two";
@@ -39,11 +68,7 @@ namespace rims.formulae
             numbers[70] = "seventy";
             numbers[80] = "eighty";
             numbers[90] = "ninty";
-
-            return numbers[(int) figure];
-            
-
-            
+            return numbers;
         }
-    }
+    }    
 }
