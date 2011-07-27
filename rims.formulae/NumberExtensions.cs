@@ -1,4 +1,3 @@
-using System;
 using ExcelDna.Integration;
 
 namespace rims.formulae
@@ -14,8 +13,19 @@ namespace rims.formulae
 
         public static string SpellNumber(double figure)
         {
-            var ifigure = (long) figure;
-            var wordData = new WordData(ifigure, string.Empty, figure - ifigure);
+            var value = ConstructWords(new WordData((long)figure));
+            var rupees = value + " " + ((long) figure == 1 ? "rupee" : "rupees");
+
+            //handle zero
+            var paise = ConstructWords(new WordData((long)(figure*100)%100));
+            if (paise != string.Empty) paise = " and " + paise + " paise";
+
+            return rupees + paise;
+
+        }
+
+        private static string ConstructWords(WordData wordData)
+        {
             ApplyDenominator(wordData,10000000,"crore");
             ApplyDenominator(wordData,100000,"lakh");
             ApplyDenominator(wordData,1000,"thousand" );
@@ -29,17 +39,17 @@ namespace rims.formulae
 
             if(wordData.figure > 0) wordData.word+=" " + GetNumbers()[wordData.figure];
 
-            if (wordData.roundedDecimalValue > 0) wordData.word += " and " + SpellNumber(wordData.roundedDecimalValue) + " paise";
 
             return wordData.word.Trim();
-            
         }
 
         private static void ApplyDenominator(WordData wordData, int denominator, string denominatorWord)
         {
             if (wordData.figure >= denominator)
             {
-                wordData.word += " " + SpellNumber(wordData.figure/denominator*1) + " " + denominatorWord;
+//                wordData.word += " " + SpellNumber(wordData.figure/denominator * 1) + " " + denominatorWord;
+                var figure = wordData.figure/denominator;                
+                wordData.word += " " + ConstructWords(new WordData(figure)) + " " + denominatorWord;
                 wordData.figure %= denominator;
             }
         }

@@ -5,13 +5,11 @@ namespace rims.formulae
     {
         internal long figure;
         internal string word;
-        internal long roundedDecimalValue;
 
-        public WordData(long figure, string word, double decimalValue)
+        public WordData(long figure)
         {
             this.figure = figure;
-            this.word = word;
-            roundedDecimalValue = (long)(decimalValue*100);
+            word = string.Empty;
         }
     }
 }
