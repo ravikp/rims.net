@@ -7,3 +7,5 @@ rims.formulae*/bin/**/*.*
 rims.formulae*/obj/**/*.*
 binaries/
 dist/
+
+*.csproj.user
